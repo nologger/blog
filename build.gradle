@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'kim'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-devtools:2.7.3'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.3'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.3'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.3'
+}
+
+test {
+    useJUnitPlatform()
+}
