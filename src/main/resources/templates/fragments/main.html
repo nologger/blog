@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<main th:fragment="main">
+    <div style="margin-top: 50px; margin-bottom: 50px">
+        <h1 class="text-center">Recently Posts</h1>
+    </div>
+
+    <article th:each="num : ${#numbers.sequence(1, 5)}">
+        <div class="card text-center center-block">
+            <!--
+            <div class="card-header">
+                card header
+            </div>
+            -->
+            <div class="card-body">
+                <h5 class="card-title">post title</h5>
+                <p class="card-text" th:if="${post} != null and ${post.summary} != null" th:text="${post.summary}"></p>
+                <a href="#" class="btn btn-primary">Go to post</a>
+            </div>
+            <div class="card-footer text-muted">
+                publish date
+            </div>
+        </div>
+    </article>
+</main>
+</html>

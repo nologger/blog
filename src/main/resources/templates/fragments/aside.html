@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<aside th:fragment="aside" class="text-center">
+    <div class="card rounded-0">
+        <img src="/image/background.jpg" class="card-img-top" alt="img...">
+        <div class="card-body">
+            <h5 class="card-title list-group-item"><a href="/" style="text-decoration:none; color:black;">Kim's blog</a>
+            </h5>
+            <p class="card-text">
+                <!-- info -->
+            </p>
+        </div>
+        <th:block th:replace="fragments/menu"></th:block>
+        <div class="text-left card-body">
+            <small>
+                <span>name  : KWANGMIN KIM</span><br>
+                <span>email : 1721046@gmail.com</span>
+            </small>
+        </div>
+    </div>
+
+    <nav>
+        <form method="get" action="/search">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control text-truncate" placeholder="Search keyword">
+                <button class="btn border text-truncate" type="button" id="">Search</button>
+            </div>
+        </form>
+    </nav>
+</aside>
+</html>

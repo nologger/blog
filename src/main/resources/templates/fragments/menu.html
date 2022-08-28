@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<ul th:fragment="menu" class="list-group list-group-flush">
+    <li class="list-group-item">
+        <a href="/java">Java</a>
+    </li>
+    <li class="list-group-item">
+        <a href="/spring">Spring</a>
+    </li>
+    <li class="list-group-item">
+        <a href="/life">Life</a>
+    </li>
+    <li class="list-group-item">
+        <a href="/fullPost">Full post</a>
+    </li>
+    <li class="list-group-item"> <!--th:if="${session.admin != null}" -->
+        <a href="/posting">Posting</a>
+    </li>
+</ul>
+</html>
