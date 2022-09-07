@@ -22,9 +22,4 @@ public class MainController {
 
         return "index";
     }
-
-    @GetMapping("/admin")
-    public String moveAdmin(Model model) {
-        return "admin";
-    }
 }

@@ -23,18 +23,10 @@ public class CategoryInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        List<Category> categories = boardService.getCategoriesForGuest();
-
-        HttpSession httpSession = request.getSession(false);
-        if (httpSession != null) {
-            Member member = (Member)httpSession.getAttribute("member");
-
-            List<Category> adminCategories = boardService.getCategoriesForAdmin();
-            if (member != null && "admin".equals(member.getAuthority()) && !categories.containsAll(adminCategories)) {
-                categories.addAll(boardService.getCategoriesForAdmin());
-            }
+        HttpSession httpSession = request.getSession();
+        if (httpSession.getAttribute("categories") == null) {
+            List<Category> categories = boardService.getCategoriesForGuest();
+            httpSession.setAttribute("categories", categories);
         }
-
-        httpSession.setAttribute("categories", categories);
     }
 }

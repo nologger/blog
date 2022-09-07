@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,14 +26,21 @@ public class MemberController {
     @Autowired
     BoardService boardService;
 
+
+    @GetMapping("/admin")
+    public String moveAdmin(@SessionAttribute Member member, Model model) {
+        if (member != null) {
+            return "redirect:/";
+        }
+        return "admin";
+    }
     @PostMapping("/signIn")
     public String signIn(@ModelAttribute MemberDTO memberDTO, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
 
-        // member check
-        Member member;
         try {
-            member = memberService.selectMember(memberDTO);
+            Member member = memberService.selectMember(memberDTO);
+            session.setAttribute("member", member);
         } catch (EmptyResultDataAccessException e){
             log.info("EmptyResultDataAccessExcpetion: {}", memberDTO);
             return "redirect:/admin";
@@ -41,9 +50,7 @@ public class MemberController {
         }
 
         // Reset categories
-        session.setAttribute("member", member);
         session.setAttribute("categories", boardService.getCategoriesForGuest().addAll(boardService.getCategoriesForAdmin()));
-
         return "redirect:/";
     }
 }
