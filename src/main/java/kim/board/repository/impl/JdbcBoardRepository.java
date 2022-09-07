@@ -114,7 +114,7 @@ public class JdbcBoardRepository implements BoardRepository {
     @Override
     public List<Post> selectRecentlyPosts(int num) {
         return jdbcTemplate.query(
-                "SELECT ROWNUM, * FROM POSTS WHERE ROWNUM BETWEEN 1 AND ? ORDER BY CREATEAT DESC",
+                "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY CREATEAT DESC) AS NUM, * FROM POSTS ORDER BY CREATEAT DESC) WHERE NUM BETWEEN 1 AND ?",
                 new PostRowMapper(),
                 num
         );
