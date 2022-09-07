@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<nav th:fragment="pagination">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" th:classappend="${previous}">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" th:classappend="${p.display}" th:each="p : ${pages}">
+          <a class="page-link" th:href="@{/board(categoryId=${category.id}, page=${p.page})}" th:text="${p.page}"></a>
+      </li>
+      <li class="page-item" th:classappend="${next}">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</nav>
+</html>

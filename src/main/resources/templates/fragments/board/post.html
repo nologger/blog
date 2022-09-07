@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<main>
+  <!-- Category Name -->
+  <div style="margin-top: 50px; margin-bottom: 50px">
+    <h1 class="text-center">Recently Posts</h1>
+  </div>
+
+  <!-- Post -->
+  <section>
+    <!-- Post info -->
+    <article>
+      <div class="card text-center center-block">
+        <!-- div class="card-header">card header</div -->
+        <div class="card-body">
+          <h5 class="card-title" th:text="${post.title}"></h5>
+          <p class="card-text" th:text="${post.summary}"></p>
+        </div>
+        <div class="card-footer text-muted" th:text="${#temporals.format(post.createAt, 'dd-MM-yyyy')}"></div>
+      </div>
+    </article>
+
+    <!-- Post content -->
+    <article>
+      <p th:text="${post.content}"></p>
+    </article>
+  </section>
+
+</main>
+</body>
+</html>

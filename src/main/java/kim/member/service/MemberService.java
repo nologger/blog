@@ -1,8 +1,9 @@
 package kim.member.service;
 
-import kim.member.model.Admin;
-import kim.member.model.dto.AdminDTO;
+import kim.member.model.Member;
+import kim.member.model.dto.MemberDTO;
 
 public interface MemberService {
-    public Admin selectByAdminDTO(AdminDTO adminDTO);
+
+    Member selectMember(MemberDTO memberDTO);
 }

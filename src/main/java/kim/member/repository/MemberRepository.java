@@ -1,8 +1,8 @@
 package kim.member.repository;
 
-import kim.member.model.Admin;
-import kim.member.model.dto.AdminDTO;
+import kim.member.model.Member;
+import kim.member.model.dto.MemberDTO;
 
 public interface MemberRepository {
-    public Admin selectByAdminDTO(AdminDTO adminDTO);
+    public Member selectMember(MemberDTO member);
 }
