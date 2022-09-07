@@ -25,7 +25,6 @@ public class MainController {
 
     @GetMapping("/admin")
     public String moveAdmin(Model model) {
-        model.addAttribute("category", "Admin sign in");
         return "admin";
     }
 }
