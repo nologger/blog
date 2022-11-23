@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS CATEGORY;
 CREATE TABLE CATEGORY (
     sequence BIGINT,
     id VARCHAR2(255) NOT NULL PRIMARY KEY,
@@ -8,6 +9,7 @@ CREATE TABLE CATEGORY (
     modifiedAt DATE
 );
 
+DROP TABLE IF EXISTS POSTS;
 CREATE TABLE POSTS (
     sequence BIGINT,
     category VARCHAR2(255),
@@ -15,4 +17,14 @@ CREATE TABLE POSTS (
     content CLOB,
     createdAt DATE,
     modifiedAt DATE
+);
+
+DROP TABLE IF EXISTS ADMIN;
+CREATE TABLE ADMIN (
+    sequence BIGINT,
+    account VARCHAR2(255),
+    password VARCHAR2(255),
+    authority VARCHAR2(255),
+    createdAt DATE,
+    lastAccessed DATE
 );

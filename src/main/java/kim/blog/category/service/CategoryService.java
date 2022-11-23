@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface CategoryService {
     public List<CategoryVO> getMainCategories();
+    public List<CategoryVO> getAdminCategories();
     public List<CategoryVO> getPostCategories();
 }

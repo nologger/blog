@@ -1,0 +1,20 @@
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:~/desktop/database/blogTestDB
+    username: sa
+    password:
+  sql:
+    init:
+      mode: always
+
+site:
+  title: kim's blog
+  author: kwangminkim

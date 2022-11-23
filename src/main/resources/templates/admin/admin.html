@@ -7,13 +7,15 @@
 <body>
 <header th:replace="fragments/header :: header"></header>
 <hr>
+
 <main style="margin: 50px 10px 50px 10px">
-    <h2><span id="title">About</span></h2>
-    <div id="info">
-        <span id="email">email: 1721046@gmail.com</span><br/>
-        <span id="name">name: kwangmin kim</span><br/>
-        <span id="githubAddress">github: null</span><br/>
-    </div>
+    <nav>
+        <ul id="navigation" style="list-style-type: square;">
+            <th:block th:each="category : ${adminCategories}">
+                <li><a th:href="@{${category.link}}" th:text="${category.title}"></a></li>
+            </th:block>
+        </ul>
+    </nav>
 </main>
 
 <hr>

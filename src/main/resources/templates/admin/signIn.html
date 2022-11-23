@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>kim's blog</title>
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<hr>
+
+<main style="margin: 50px 10px 50px 10px">
+    <form method="post" action="/admin/signIn">
+        <table>
+            <tr>
+                <th>account: </th>
+                <td><input type="text" id="account" name="account" value=""></td>
+            </tr>
+            <tr>
+                <th>password: </th>
+                <td><input type="password" id="password" name="password" value=""></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="sign in" style="width:100%;">
+                </td>
+            </tr>
+        </table>
+    </form>
+</main>
+
+<hr>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

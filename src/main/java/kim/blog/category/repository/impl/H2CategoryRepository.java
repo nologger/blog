@@ -30,6 +30,22 @@ public class H2CategoryRepository implements CategoryRepository {
     }
 
     @Override
+    public List<CategoryVO> selectAdminCategories() {
+        return jdbcTemplate.query(
+                "select * from CATEGORY where part='admin' order by sequence",
+                (rs, rowNum) -> new CategoryVO(
+                        rs.getLong("sequence"),
+                        rs.getString("id"),
+                        rs.getString("part"),
+                        rs.getString("title"),
+                        rs.getString("link"),
+                        rs.getString("createdAt"),
+                        rs.getString("modifiedAt")
+                )
+        );
+    }
+
+    @Override
     public List<CategoryVO> selectPostCategories() {
         return jdbcTemplate.query(
                 "select * from CATEGORY where part='post' order by sequence",

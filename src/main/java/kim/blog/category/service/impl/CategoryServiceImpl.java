@@ -19,6 +19,9 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public List<CategoryVO> getAdminCategories() { return categoryRepository.selectAdminCategories(); }
+
+    @Override
     public List<CategoryVO> getPostCategories() {
         return categoryRepository.selectPostCategories();
     }
