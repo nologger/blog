@@ -20,7 +20,7 @@ database board
 
 Admin -> AdminController : path=/admin
 alt adminMember in session:
-    Admin <- AdminController : view=/admin/adminHome
+    Admin <- AdminController : view=/admin/home
 else adminMember not in session:
     Admin <- AdminController : view=/admin/signIn
 end
