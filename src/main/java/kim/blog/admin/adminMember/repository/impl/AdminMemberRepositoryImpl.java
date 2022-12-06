@@ -5,7 +5,9 @@ import kim.blog.admin.adminMember.domain.AdminMember;
 import kim.blog.admin.adminMember.repository.AdminMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class AdminMemberRepositoryImpl implements AdminMemberRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;

@@ -28,3 +28,12 @@ CREATE TABLE ADMIN (
     createdAt DATE,
     lastAccessed DATE
 );
+
+DROP TABLE IF EXISTS MEMBER;
+CREATE TABLE MEMBER (
+    sequence BIGINT,
+    account VARCHAR2(80),
+    password VARCHAR2(255),
+    authority VARCHAR2(10),
+    createdAt DATE
+);
