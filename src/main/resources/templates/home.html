@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>kim's blog</title>
-</head>
+<head th:replace="/common/head :: head"></head>
 <body>
-<header th:replace="fragments/header :: header"></header>
+<header th:replace="/common/header :: header"></header>
 <hr>
 
 <main style="margin: 50px 10px 50px 10px">
+    <h2 th:replace="/common/mainHeader :: h2"></h2>
     <nav>
         <ul id="navigation" style="list-style-type: square;">
-            <th:block th:each="category : ${mainCategories}">
-                <li><a th:href="@{${category.link}}" th:text="${category.title}"></a></li>
+            <th:block th:each="category : ${categories}">
+                <li><a th:href="@{${category.uri}}" th:text="${category.title}"></a></li>
             </th:block>
         </ul>
     </nav>
+
+    <br>
+
+    <div>
+        <span><a href="/member/signIn">sign in...</a></span><br>
+        <span><a href="/member/signUp">sign up...</a></span>
+    </div>
 </main>
 
 <hr>
-<footer th:replace="fragments/footer :: footer"></footer>
+<footer th:replace="/common/footer :: footer"></footer>
 </body>
 </html>

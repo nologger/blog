@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>kim's blog</title>
+</head>
+<style>
+  table {
+    width: 99%;
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  th {
+    background-color: lightGray;
+    border: 1px solid black;
+  }
+
+  td {
+    border: 1px solid black;
+  }
+</style>
+<script>
+</script>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<hr>
+
+<main style="margin: 50px 10px 50px 10px; width:100%;">
+  <form action="/main/financial/financialLedger" method="post">
+    <select id="monthly" name="monthly">
+      <option value="202212">2022년 12월</option>
+    </select>
+    <input type="submit" value="조회">
+    <input type="submit" value="작성">
+  </form>
+
+  <br>
+
+  <table>
+    <caption align="bottom">2022년 12월 명세서</caption>
+    <colgroup>
+      <col style="width:10%;">
+      <col style="width:10%;">
+      <col style="width:50%;">
+      <col style="width:10%;">
+      <col style="width:10%;">
+      <col style="width:10%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>날짜</th>
+        <th>구분</th>
+        <th>상세</th>
+        <th>수입</th>
+        <th>지출</th>
+        <th>총액</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>20221201</td>
+        <td>월급</td>
+        <td>KTNET 11월 급여</td>
+        <td>1</td>
+        <td></td>
+        <td>1</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>total</th>
+        <th></th>
+        <th></th>
+        <th>수입총액</th>
+        <th>지출총액</th>
+        <th>12월총액</th>
+      </tr>
+    </tfoot>
+  </table>
+</main>
+
+<hr>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
