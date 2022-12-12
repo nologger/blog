@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/head :: head"></head>
+<body>
+<header th:replace="/common/header :: header"></header>
+<hr>
+
+<main style="margin: 50px 10px 50px 10px">
+  <h1 th:text="${post.title}"></h1>
+  <div style="color:gray">created at: [[${post.createdAt}]]</div>
+  <div style="color:gray">modified at: [[${post.modifiedAt}]]</div>
+  <div th:text="${post.content}" style="margin: 20px 0 20px 0">
+  </div>
+</main>
+
+<hr>
+<footer th:replace="/common/footer :: footer"></footer>
+</body>
+</html>

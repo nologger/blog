@@ -8,7 +8,11 @@
 <main style="margin: 50px 10px 50px 10px">
     <h2 th:replace="/common/mainHeader :: h2"></h2>
     <ul>
-        <li style="list-style-type: square;">[ 01 ][ 2022-11-12 ][ thymeleaf ] <strong>test post title</strong></li>
+        <li style="list-style-type: square;" th:each="post : ${posts}">
+            <a th:href="@{/home/board/view(sequence=${post.sequence})}" style="text-decoration:none;">
+               〔[[${post.sequence}]]〕〔[[${post.createdAt}]]〕〔[[${post.part}]]〕 <b th:text="${post.title}"></b>
+            </a>
+        </li>
     </ul>
 </main>
 
