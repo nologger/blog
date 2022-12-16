@@ -1,5 +1,6 @@
 package kim.blog.home.board.service.impl;
 
+import kim.blog.home.board.domain.PostDTO;
 import kim.blog.home.board.domain.PostVO;
 import kim.blog.home.board.repository.BoardRepository;
 import kim.blog.home.board.service.BoardService;
@@ -26,6 +27,16 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public PostVO getPost(long sequence) {
         return boardRepository.getPost(sequence);
+    }
+
+    @Override
+    public void insertPost(PostDTO postDTO) {
+        boardRepository.insertPost(postDTO);
+    }
+
+    @Override
+    public String validatePost(String content) {
+        return null;
     }
 
 }

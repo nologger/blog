@@ -1,5 +1,6 @@
 package kim.blog.home.board.repository.impl;
 
+import kim.blog.home.board.domain.PostDTO;
 import kim.blog.home.board.domain.PostVO;
 import kim.blog.home.board.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +57,16 @@ public class H2BoardRepository implements BoardRepository {
 
     @Override
     public List<PostVO> getPosts(String part) {
-
-
         return null;
+    }
+
+    @Override
+    public void insertPost(PostDTO postDTO) {
+        jdbcTemplate.update("INSERT INTO BOARD VALUES(NEXT VALUE FOR BOARD_SEQUENCE, now(), now(), ?, ?, ?, ?)",
+                postDTO.getPart(),
+                postDTO.getWriter(),
+                postDTO.getTitle(),
+                postDTO.getContent()
+        );
     }
 }

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PathInfoService {
     PathInfo getPathInfo(String uri);
-    List<PathInfo> getCommonPathInfo();
+    List<PathInfo> getCategories(String part);
 }

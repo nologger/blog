@@ -1,8 +1,8 @@
-package kim.blog.member.service.impl;
+package kim.blog.home.member.service.impl;
 
-import kim.blog.member.domain.Member;
-import kim.blog.member.repository.MemberRepository;
-import kim.blog.member.service.MemberService;
+import kim.blog.home.member.domain.Member;
+import kim.blog.home.member.repository.MemberRepository;
+import kim.blog.home.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

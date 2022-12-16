@@ -18,4 +18,5 @@ public class PostVO {
     final String writer;
     final String title;
     final String content;
+
 }

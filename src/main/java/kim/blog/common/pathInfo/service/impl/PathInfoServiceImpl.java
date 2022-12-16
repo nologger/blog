@@ -32,8 +32,8 @@ public class PathInfoServiceImpl implements PathInfoService {
     }
 
     @Override
-    public List<PathInfo> getCommonPathInfo() {
-        List<PathInfo> pathInfoList = pathInfoRepository.selectByPart();
+    public List<PathInfo> getCategories(String part) {
+        List<PathInfo> pathInfoList = pathInfoRepository.selectByPart(part);
         return pathInfoList;
     }
 }

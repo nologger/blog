@@ -9,7 +9,7 @@
     <h2 th:replace="/common/mainHeader :: h2"></h2>
     <ul>
         <li style="list-style-type: square;" th:each="post : ${posts}">
-            <a th:href="@{/home/board/view(sequence=${post.sequence})}" style="text-decoration:none;">
+            <a th:href="@{/board/view(sequence=${post.sequence})}" style="text-decoration:none;">
                〔[[${post.sequence}]]〕〔[[${post.createdAt}]]〕〔[[${post.part}]]〕 <b th:text="${post.title}"></b>
             </a>
         </li>

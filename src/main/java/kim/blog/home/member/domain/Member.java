@@ -1,4 +1,4 @@
-package kim.blog.member.domain;
+package kim.blog.home.member.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

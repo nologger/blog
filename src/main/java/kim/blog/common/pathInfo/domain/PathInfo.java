@@ -1,6 +1,7 @@
 package kim.blog.common.pathInfo.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 

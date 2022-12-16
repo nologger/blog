@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PathInfoRepository {
     PathInfo selectByUri(String uri);
-    List<PathInfo> selectByPart();
+    List<PathInfo> selectByPart(String part);
 }

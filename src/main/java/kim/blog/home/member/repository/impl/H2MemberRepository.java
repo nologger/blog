@@ -1,7 +1,7 @@
-package kim.blog.member.repository.impl;
+package kim.blog.home.member.repository.impl;
 
-import kim.blog.member.domain.Member;
-import kim.blog.member.repository.MemberRepository;
+import kim.blog.home.member.domain.Member;
+import kim.blog.home.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
-package kim.blog.member.controller;
+package kim.blog.home.member.controller;
 
-import kim.blog.member.domain.Member;
-import kim.blog.member.service.MemberService;
+import kim.blog.home.member.domain.Member;
+import kim.blog.home.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +16,14 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
+    @GetMapping
+    public String member(HttpSession session) {
+        if (session.getAttribute("member") == null) {
+            return "/member/signIn";
+        }
+        return "/member/info";
+    }
+
     @GetMapping("/signIn")
     public String signIn() {
         return "/member/signIn";
@@ -23,13 +31,13 @@ public class MemberController {
 
     @PostMapping("/signIn")
     public String signInProcess(Member member, HttpSession session) {
-        member = memberService.signIn(member);
-
-        if (member == null) {
+        try {
+            member = memberService.signIn(member);
+            session.setAttribute("member", member);
+        } catch (Exception e) {
             return "/member/signIn";
         }
-        session.setAttribute("member", member);
-        return "redirect:/home";
+        return "redirect:/";
     }
 
     @GetMapping("/signUp")
@@ -40,6 +48,6 @@ public class MemberController {
     @PostMapping("/signUp")
     public String signUpProcess(Member member) {
         memberService.signUp(member);
-        return "redirect:/home";
+        return "redirect:/";
     }
 }

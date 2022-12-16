@@ -14,14 +14,9 @@
             </th:block>
         </ul>
     </nav>
-
     <br>
 
-    <div th:if="${session.member == null}">
-        <span><a href="/member/signIn">sign in...</a></span><br>
-        <span><a href="/member/signUp">sign up...</a></span>
-    </div>
-    <div th:if="${session.member != null}">
+    <div>
         <span>hello! <a href="/home"><b th:text="${session.member.name}"></b></a></span>
     </div>
 </main>

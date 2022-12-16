@@ -1,4 +1,4 @@
-package kim.blog.common.interceptor;
+package kim.blog.interceptor;
 
 import kim.blog.common.pathInfo.domain.PathInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -23,14 +23,14 @@ public class PathInfoInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-
         // set pathInfoList
-        List<PathInfo> pathInfoList = getPathInfoList(request.getRequestURI().toString());
+        String uri = request.getRequestURI().toString();
+        log.info("uri={}", uri);
+        List<PathInfo> pathInfoList = getPathInfoList(uri);
         modelAndView.addObject("pathInfoList", pathInfoList);
 
         // set pathInfo
-        PathInfo pathInfo = pathInfoService.getPathInfo(request.getRequestURI().toString());
+        PathInfo pathInfo = pathInfoService.getPathInfo(uri);
         modelAndView.addObject("pathInfo", pathInfo);
     }
 
@@ -41,6 +41,7 @@ public class PathInfoInterceptor implements HandlerInterceptor {
      */
     private List<PathInfo> getPathInfoList(String uri) {
         List<PathInfo> pathInfoList = new ArrayList<>();
+        pathInfoList.add(pathInfoService.getPathInfo("/"));
 
         String[] uriTokens = Arrays.stream(uri.split("/")).filter(token -> !token.isEmpty()).toArray(String[]::new);
         StringBuilder path = new StringBuilder();

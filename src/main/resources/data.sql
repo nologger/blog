@@ -1,20 +1,33 @@
+-------------------------------------------------------------------------------PATHINFO_all
 INSERT INTO PATHINFO(SEQUENCE, URI, TITLE, PART, AUTHORITY, CREATEDAT)
-VALUES(0, '/home', 'home', 'config', 'common', now());
+VALUES(NEXT VALUE FOR PATHINFO_SEQUENCE, '/', 'home', 'config', 'all', now());
 
 INSERT INTO PATHINFO(SEQUENCE, URI, TITLE, PART, AUTHORITY, CREATEDAT)
-VALUES(1, '/home/about', 'about', 'main', 'common', now());
+VALUES(NEXT VALUE FOR PATHINFO_SEQUENCE, '/about', 'about', 'common', 'all', now());
 
 INSERT INTO PATHINFO(SEQUENCE, URI, TITLE, PART, AUTHORITY, CREATEDAT)
-VALUES(2, '/home/board', 'board', 'main', 'common', now());
+VALUES(NEXT VALUE FOR PATHINFO_SEQUENCE, '/board', 'board', 'common', 'all', now());
 
 INSERT INTO PATHINFO(SEQUENCE, URI, TITLE, PART, AUTHORITY, CREATEDAT)
-VALUES(3, '/home/financial', 'financial', 'main', 'member', now());
+VALUES(NEXT VALUE FOR PATHINFO_SEQUENCE, '/board/view', 'view', 'config', 'all', now());
 
 INSERT INTO PATHINFO(SEQUENCE, URI, TITLE, PART, AUTHORITY, CREATEDAT)
-VALUES(4, '/home/board/view', 'view', 'config', 'common', now());
+VALUES(NEXT VALUE FOR PATHINFO_SEQUENCE, '/member', 'member', 'config', 'all', now());
+
+-------------------------------------------------------------------------------PATHINFO_member
+INSERT INTO PATHINFO(SEQUENCE, URI, TITLE, PART, AUTHORITY, CREATEDAT)
+VALUES(NEXT VALUE FOR PATHINFO_SEQUENCE, '/financial', 'financial', 'member', 'member', now());
+
+-------------------------------------------------------------------------------PATHINFO_admin
+INSERT INTO PATHINFO(SEQUENCE, URI, TITLE, PART, AUTHORITY, CREATEDAT)
+VALUES(NEXT VALUE FOR PATHINFO_SEQUENCE, '/adminHome', 'adminHome', 'config', 'admin', now());
+
+INSERT INTO PATHINFO(SEQUENCE, URI, TITLE, PART, AUTHORITY, CREATEDAT)
+VALUES(NEXT VALUE FOR PATHINFO_SEQUENCE, '/board/posting', 'posting', 'admin', 'admin', now());
+
 
 INSERT INTO MEMBER(SEQUENCE, AUTHORITY, ACCOUNT, PASSWORD, NAME, CREATEDAT)
-VALUES(NEXT VALUE FOR MEMBER_SEQUENCE, 'admin', 'TEST', 'TEST', 'TESTER', now());
+VALUES(NEXT VALUE FOR MEMBER_SEQUENCE, 'admin', 'admin', 'admin', 'admin', now());
 
 INSERT INTO BOARD(SEQUENCE, CREATEDAT, MODIFIEDAT, PART, WRITER, TITLE, CONTENT)
 VALUES(NEXT VALUE FOR BOARD_SEQUENCE, now(), now(), 'TEST', 'TESTER', 'TEST TITLE', 'TEST CONTENT');

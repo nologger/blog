@@ -1,6 +1,6 @@
-package kim.blog.member.service;
+package kim.blog.home.member.service;
 
-import kim.blog.member.domain.Member;
+import kim.blog.home.member.domain.Member;
 
 public interface MemberService {
     public void signUp(Member member);

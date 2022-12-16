@@ -2,6 +2,7 @@ package kim.blog.common.pathInfo.repository.impl;
 
 import kim.blog.common.pathInfo.domain.PathInfo;
 import kim.blog.common.pathInfo.repository.PathInfoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
@@ -12,14 +13,17 @@ import java.nio.file.Path;
 import java.util.List;
 
 @Repository
+@Slf4j
 public class H2PathInfoRepository implements PathInfoRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
     @Override
     public PathInfo selectByUri(String uri) {
+        PathInfo pathInfo;
+
         try {
-            PathInfo pathInfo = jdbcTemplate.queryForObject(
+            pathInfo = jdbcTemplate.queryForObject(
                     "SELECT * FROM PATHINFO WHERE URI=?",
                     (rs, rowNum) -> {
                         return new PathInfo(
@@ -32,21 +36,21 @@ public class H2PathInfoRepository implements PathInfoRepository {
                         );
                     },
                     uri
-                );
+            );
+
             return pathInfo;
-        } catch (EmptyResultDataAccessException e) {
-            return null;
-        } catch (IncorrectResultSizeDataAccessException e) {
-            return null;
         } catch (Exception e) {
-            return null;
+            log.info("error uri: [{}]", uri);
+            e.printStackTrace();
         }
+
+        return null;
     }
 
     @Override
-    public List<PathInfo> selectByPart() {
+    public List<PathInfo> selectByPart(String part) {
         return jdbcTemplate.query(
-                "SELECT * FROM PATHINFO WHERE PART='main' ORDER BY SEQUENCE",
+                "SELECT * FROM PATHINFO WHERE PART=? ORDER BY SEQUENCE",
                 (rs, rowNum) -> {
                     return new PathInfo(
                             rs.getLong("SEQUENCE"),
@@ -56,7 +60,8 @@ public class H2PathInfoRepository implements PathInfoRepository {
                             rs.getString("AUTHORITY"),
                             rs.getTimestamp("CREATEDAT").toLocalDateTime().toLocalDate()
                     );
-                }
+                },
+                part
         );
     }
 }
