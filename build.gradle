@@ -4,6 +4,7 @@ plugins {
 
 group 'kim.blog'
 version '1.0-SNAPSHOT'
+compileJava.options.encoding='UTF-8'
 
 repositories {
     mavenCentral()
@@ -23,9 +24,21 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 
     runtimeOnly 'com.h2database:h2:2.1.214'
+
     compileOnly 'org.projectlombok:lombok:1.18.24'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'kim.blog.BlogApplication'
+        )
+    }
+    enabled = false
 }

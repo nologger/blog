@@ -16,5 +16,5 @@ spring:
       mode: always
 
 site:
-  title: kim's blog
-  author: kwangminkim
+  title: noLogger
+  author: kwangmin_kim

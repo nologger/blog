@@ -1,9 +1,0 @@
-<header xmlns:th="http://www.thymeleaf.org">
-  <h1>【 <span id="blogTitle" onclick="location.href='/'" th:text="${@environment.getProperty('site.title')}"></span> 】</h1>
-  <div th:if="${pathInfoList != null}">
-    path:
-    <th:block th:each="pathInfo : ${pathInfoList}">
-      / <span><a th:href="@{${pathInfo.uri}}" th:text="${pathInfo.title}"></a></span>
-    </th:block>
-  </div>
-</header>
